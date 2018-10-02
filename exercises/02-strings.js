@@ -8,7 +8,15 @@
 // Example:
 // reverse("skoob") --> "books"
 
-
+function reverse (string) {
+  var reverseString = [];
+  var j = string.length;
+  for (var i = 0; i < j; i++) {
+    reverseString.push(string.charAt(i));
+  }
+  reverseString.reverse();
+  return reverseString.join('');
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "findLongestWord" that takes a string of words and returns
@@ -18,7 +26,18 @@
 // Example:
 // findLongestWord('a book full of dogs') --> 'book'
 
-
+function findLongestWord (string) {
+  var stringArr = string.split(' ');
+  var longestWordLength = 0;
+  var longestWord = '';
+  for (var i = 0; i < stringArr.length; i++) {
+    if (stringArr[i].length > longestWordLength) {
+      longestWordLength = stringArr[i].length;
+      longestWord = stringArr[i];
+    }
+  }
+  return longestWord;
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function called "nicer"
@@ -29,7 +48,19 @@
 // nicer('mom get the heck in here and bring me a darn sandwich.')
 // > 'mom get the in here and bring me a sandwich.'
 
-
+function nicer (string) {
+  var stringArr = string.split(' ');
+  var niceArr = [];
+  for (var i = 0; i < stringArr.length; i++) {
+    if (stringArr[i] !== 'heck' &&
+    stringArr[i] !== 'darn' &&
+    stringArr[i] !== 'dang' &&
+    stringArr[i] !== 'crappy') {
+      niceArr.push(stringArr[i]);
+    }
+  }
+  return niceArr.join(' ');
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function called "capitalizeAll"
@@ -40,7 +71,14 @@
 // capitalizeAll('hello world') --> 'Hello World'
 // capitalizeAll('every day is like sunday') --> 'Every Day Is Like Sunday'
 
-
+function capitalizeAll (string) {
+  var stringLowerCase = string.toLowerCase();
+  var stringArr = stringLowerCase.split(' ');
+  for (var i = 0; i < stringArr.length; i++) {
+    stringArr[i] = stringArr[i].charAt(0).toUpperCase() + stringArr[i].slice(1);
+  }
+  return stringArr.join(' ');
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function called "split" that does the same thing as String.split
@@ -52,3 +90,14 @@
 // split('a-b-c', '-') --> ['a', 'b', 'c']
 // split('APPLExxBANANAxxCHERRY', 'xx') --> ['APPLE', 'BANANA', 'CHERRY']
 // split('xyz', 'r') --> ['xyz']
+
+function split (string, delimiter) {
+  var splitArr = [];
+  for (var i = 0; i < string.length; i++) {
+    splitArr.push(string.substring(0,string.indexOf(delimiter)));
+    string = string.slice(string.indexOf(delimiter));
+  }
+  return splitArr;
+}
+
+console.log(split('a-b-c', '-'));

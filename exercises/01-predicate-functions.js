@@ -21,7 +21,16 @@
 // isVowel(99) --> false
 // isVowel({e: 'Elephant'}) --> false
 
-
+function isVowel (string) {
+  const vowel = {a: true, e: true, i: true, o: true, u: true, A: true,
+    E: true, I: true, O: true, U: true}
+  if (string.length === 1 && vowel[string.charAt(0)]) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write two functions: "isEven" and "isOdd" that take a number argument and
@@ -37,7 +46,23 @@
 // isOdd('7') --> false
 // isOdd(3.14) --> false
 
+function isEven (number) {
+ if (typeof number === 'number' && Number.isInteger(number) && number % 2 === 0) {
+   return true;
+ }
+ else {
+   return false;
+ }
+}
 
+function isOdd (number) {
+  if (typeof number === 'number' && Number.isInteger(number) && number % 2 !== 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Write a function "isCapitalCity" that takes two arguments: a US state and a city name
@@ -52,3 +77,30 @@
 // isCapitalCity('Texas', 'Houston') --> false
 // isCapitalCity('Alaska', 'Juneau') --> true
 // isCapitalCity('Strawberry', 'Mango') --> false
+
+function isCapitalCity (state, city) {
+  const map = {"Alabama":"Montgomery","Alaska":"Juneau","Arizona":"Phoenix",
+  "Arkansas":"Little Rock","California":"Sacramento","Colorado":"Denver",
+  "Connecticut":"Hartford","Delaware":"Dover","Florida":"Tallahassee",
+  "Georgia":"Atlanta","Hawaii":"Honolulu","Idaho":"Boise","Illinois":"Springfield",
+  "Indiana":"Indianapolis","Iowa":"Des Moines","Kansas":"Topeka","Kentucky":"Frankfort",
+  "Louisiana":"Baton Rouge","Maine":"Augusta","Maryland":"Annapolis",
+  "Massachusetts":"Boston","Michigan":"Lansing","Minnesota":"Saint Paul",
+  "Mississippi":"Jackson","Missouri":"Jefferson City","Montana":"Helana",
+  "Nebraska":"Lincoln","Nevada":"Carson City","New Hampshire":"Concord",
+  "New Jersey":"Trenton","New Mexico":"Santa Fe","New York":"Albany",
+  "North Carolina":"Raleigh","North Dakota":"Bismarck","Ohio":"Columbus",
+  "Oklahoma":"Oklahoma City","Oregon":"Salem","Pennsylvania":"Harrisburg",
+  "Rhode Island":"Providence","South Carolina":"Columbia","South Dakota":"Pierre",
+  "Tennessee":"Nashville","Texas":"Austin","Utah":"Salt Lake City",
+  "Vermont":"Montpelier","Virginia":"Richmond","Washington":"Olympia",
+  "West Virginia":"Charleston","Wisconsin":"Madison","Wyoming":"Cheyenne"};
+  if ((typeof state && typeof city) === 'string' && map[state] === city) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(isCapitalCity('Texas', 'Houston'));
