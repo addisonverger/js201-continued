@@ -102,5 +102,3 @@ function isCapitalCity (state, city) {
     return false;
   }
 }
-
-console.log(isCapitalCity('Texas', 'Houston'));

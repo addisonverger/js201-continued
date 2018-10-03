@@ -93,11 +93,16 @@ function capitalizeAll (string) {
 
 function split (string, delimiter) {
   var splitArr = [];
-  for (var i = 0; i < string.length; i++) {
-    splitArr.push(string.substring(0,string.indexOf(delimiter)));
-    string = string.slice(string.indexOf(delimiter));
+  var delimiterIdx = string.indexOf(delimiter);
+  // -1 indicates that the string is empty; the delimiter no longer exists
+  while (delimiterIdx !== -1) {
+    const chunk = string.substring(0,delimiterIdx);
+    splitArr.push(chunk);
+    string = string.substring(chunk.length + delimiter.length);
+    var delimiterIdx = string.indexOf(delimiter);
   }
+  splitArr.push(string);
   return splitArr;
 }
 
-console.log(split('a-b-c', '-'));
+console.log(split('APPLExxBANANAxxCHERRY', 'xx'));
