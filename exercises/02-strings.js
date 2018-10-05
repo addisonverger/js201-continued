@@ -104,5 +104,3 @@ function split (string, delimiter) {
   splitArr.push(string);
   return splitArr;
 }
-
-console.log(split('APPLExxBANANAxxCHERRY', 'xx'));
